@@ -218,7 +218,7 @@ const PatientDashboard = () => {
           </ResponsiveContainer>
           <div style={{ color: 'white', marginTop: '10px', fontSize: "20px" }}>
             <p>Total Bill: €{totalBill}</p>
-            <p>Outstanding Bill: €{outstandingBill}</p>
+            <p>Outstanding Balance: €{outstandingBill}</p>
           </div>
         </div>
 
