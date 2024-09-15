@@ -135,6 +135,13 @@ const PatientDashboard = () => {
     color: 'white',
     
   };
+  const cardHeaderStyle1 = {
+    fontSize: '20px',
+    fontWeight: 'bold',
+    marginBottom: '15px',
+    color: 'black',
+    
+  };
 
   return (
     <div style={containerStyle}>
@@ -174,7 +181,7 @@ const PatientDashboard = () => {
 
         {/* Card for Current Vitals */}
         <div style={cardVitalStyle}>
-          <h3 style={cardHeaderStyle}>Current Vitals</h3>
+          <h3 style={cardHeaderStyle1}>Current Vitals</h3>
           <p><strong>Blood Pressure:</strong> 120/80 mmHg</p>
           <p><strong>Heart Rate:</strong> 72 bpm</p>
           <p><strong>Respiratory Rate:</strong> 16 breaths/min</p>
@@ -184,7 +191,7 @@ const PatientDashboard = () => {
 
       {/* Graphs Section */}
       <div style={{ textAlign: 'center' }}>
-      <div style={{ marginTop: '50px' }}>
+      <div style={{ marginTop: '80px' , }}>
           <h3 style={{ color: 'white' }}>Response to Treatment</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={dataTreatments}>
@@ -197,7 +204,7 @@ const PatientDashboard = () => {
           </ResponsiveContainer>
         </div>
         {/* Graph for Total and Outstanding Bills */}
-        <div>
+        <div style={{ marginTop: '80px' , }}>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={dataBills}>
               <CartesianGrid strokeDasharray="3 3" />
