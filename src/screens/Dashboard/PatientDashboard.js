@@ -107,7 +107,7 @@ const PatientDashboard = () => {
   };
 
   const cardStyle = {
-    backgroundColor: '#f5f5f5',  // Light background
+    backgroundColor: 'green',  // Light background
     padding: '20px',
     borderRadius: '10px',
     color: '#333',
@@ -132,6 +132,7 @@ const PatientDashboard = () => {
     fontSize: '20px',
     fontWeight: 'bold',
     marginBottom: '15px',
+    color: 'white',
     
   };
 
@@ -162,7 +163,7 @@ const PatientDashboard = () => {
         {/* Card for Current Status */}
         <div style={cardStyle}>
           <h3 style={cardHeaderStyle}>Current Status</h3>
-          <ul>
+          <ul style={{ color: 'white',  }}>
             <li>Patient is alert, oriented to time, place, and person, and fully breathing independently.</li>
             <li>Neurological function shows significant improvement with no signs of seizures or brain swelling.</li>
             <li>Patient is ambulatory with assistance and continues to work with physical and occupational therapists.</li>
@@ -183,6 +184,18 @@ const PatientDashboard = () => {
 
       {/* Graphs Section */}
       <div style={{ textAlign: 'center' }}>
+      <div style={{ marginTop: '50px' }}>
+          <h3 style={{ color: 'white' }}>Response to Treatment</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={dataTreatments}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="white" />
+              <YAxis stroke="white" />
+              <Tooltip />
+              <Bar dataKey="response" fill="#8884d8" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
         {/* Graph for Total and Outstanding Bills */}
         <div>
           <ResponsiveContainer width="100%" height={300}>
@@ -202,7 +215,7 @@ const PatientDashboard = () => {
           </div>
         </div>
 
-        {/* Graph for Treatments and Response */}
+        {/* Graph for Treatments and Response
         <div style={{ marginTop: '50px' }}>
           <h3 style={{ color: 'white' }}>Response to Treatment</h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -214,7 +227,7 @@ const PatientDashboard = () => {
               <Bar dataKey="response" fill="#8884d8" />
             </BarChart>
           </ResponsiveContainer>
-        </div>
+        </div> */}
 
         {/* Graph for Days Spent in Hospital */}
         <div style={{ marginTop: '50px' }}>
