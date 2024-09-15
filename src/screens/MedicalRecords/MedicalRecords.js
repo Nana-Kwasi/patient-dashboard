@@ -7,10 +7,10 @@ const medicalRecords = [
     category: 'General Information',
     records: [
       { label: 'Name', value: 'Annie Love' },
-      { label: 'Age', value: '32' },
-      { label: 'Blood Type', value: 'O+' },
+      { label: 'Age', value: '46' },
+    //   { label: 'Blood Type', value: 'O+' },
       { label: 'Height', value: '170 cm' },
-      { label: 'Weight', value: '65 kg' },
+    //   { label: 'Weight', value: '65 kg' },
     ],
   },
   {
@@ -52,14 +52,14 @@ const medicalRecords = [
       { label: 'Cholesterol', value: '200 mg/dL' },
     ],
   },
-  {
-    category: 'Immunizations',
-    records: [
-      { label: 'Tetanus', value: '2021' },
-      { label: 'Influenza', value: '2023' },
-      { label: 'COVID-19', value: '2023 (Booster)' },
-    ],
-  },
+//   {
+//     category: 'Immunizations',
+//     records: [
+//       { label: 'Tetanus', value: '2021' },
+//       { label: 'Influenza', value: '2023' },
+//       { label: 'COVID-19', value: '2023 (Booster)' },
+//     ],
+//   },
 //   {
 //     category: 'Family Medical History',
 //     records: [
@@ -155,7 +155,7 @@ const MedicalRecords = () => {
           </div>
         </div>
         <div>
-          <p>Call us: +49 123 456 7890</p>
+          {/* <p>Call us: +49 123 456 7890</p> */}
         </div>
       </div>
 

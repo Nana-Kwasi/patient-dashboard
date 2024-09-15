@@ -8,7 +8,7 @@ const LoginScreen = () => {
   const [error, setError] = useState('');
   const [attempts, setAttempts] = useState(0);
   const [isBlocked, setIsBlocked] = useState(false);
-  const [showCard, setShowCard] = useState(false); // State to show patient card
+  const [showCard, setShowCard] = useState(false); 
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -21,9 +21,9 @@ const LoginScreen = () => {
 
     setTimeout(() => {
       if (hospitalID === 'P2024GER-7934XQZ8') {
-        setShowCard(true); // Show the patient details card after successful login
+        setShowCard(true); 
         setError('');
-      } else {
+      } else { 
         setAttempts((prev) => prev + 1);
         setError('Invalid Hospital ID. Please try again.');
         if (attempts >= 2) {
@@ -31,7 +31,7 @@ const LoginScreen = () => {
           setTimeout(() => {
             setAttempts(0);
             setIsBlocked(false);
-          }, 60000); // Block for 1 minute
+          }, 60000); 
         }
       }
       setIsLoading(false);
@@ -100,8 +100,9 @@ const LoginScreen = () => {
       <h3>Patient Details</h3>
       <p><strong>Name:</strong> Annie Love Mertens</p>
       <p><strong>Hospital ID:</strong> P2024GER-7934XQZ8</p>
-      <p><strong>Date of Birth</strong> 02/04/1978</p>
-      <p><strong>Condition:</strong>Surgery</p>
+      <p><strong>Age:</strong> 46</p>
+      <p><strong>Condition:</strong>  Unconsciousness</p>
+      
       <button
         onClick={() => navigate('/dashboard')}
         style={{
@@ -113,10 +114,17 @@ const LoginScreen = () => {
           border: 'none',
           cursor: 'pointer',
           marginTop: '10px',
+          transition: 'background-color 0.3s ease',
         }}
+        onMouseOver={(e) => e.target.style.backgroundColor = 'red'}
+        onMouseOut={(e) => e.target.style.backgroundColor = '#007BFF'}
       >
         Go to Dashboard
       </button>
+
+      <p style={{ marginTop: '10px', fontSize: '15px', color: '#888' ,fontWeight:'bolder'}}>
+        Attended By:    Dr. Med Helbert Ackstaller
+      </p>
     </div>
   );
 
@@ -156,7 +164,7 @@ const LoginScreen = () => {
             borderRadius: '5px',
             border: 'none',
           }}
-          disabled={isBlocked} // Disable input if blocked
+          disabled={isBlocked} 
         />
         <br />
         <button

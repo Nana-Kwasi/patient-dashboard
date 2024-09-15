@@ -6,33 +6,33 @@ const appointments = [
   {
     id: 1,
     patientName: 'Annie Love',
-    message: 'Regular check-up for hypertension.',
-    doctorName: 'Dr. Sarah Miller',
-    appointmentDate: '2024-09-15',
-    appointmentTime: '10:30 AM',
-    doctorImage: '/doc.jpg',
-    expertise: 'Cardiology',
+    // message: 'Regular check-up for hypertension.',
+    doctorName: 'Dr. Med Herbert Ackstaller',
+    // appointmentDate: '2024-09-15',
+    // appointmentTime: '10:30 AM',
+    doctorImage: '/med.jpeg',
+    expertise: 'Surgeon',
   },
-  {
-    id: 2,
-    patientName: 'Annie Love',
-    message: 'Follow-up on blood test results.',
-    doctorName: 'Dr. Michael Brown',
-    appointmentDate: '2024-09-18',
-    appointmentTime: '12:00 PM',
-    doctorImage: '/doc.jpg',
-    expertise: 'General Medicine',
-  },
-  {
-    id: 3,
-    patientName: 'Annie Love',
-    message: 'Open Reduction and Internal Fixation Surgery.',
-    doctorName: 'Dr. Emma Watson',
-    appointmentDate: '2024-09-22',
-    appointmentTime: '09:00 AM',
-    doctorImage: '/doc.jpg',
-    expertise: 'Orthopedic Surgery',
-  },
+//   {
+//     id: 2,
+//     patientName: 'Annie Love',
+//     message: 'Follow-up on blood test results.',
+//     doctorName: 'Dr. Michael Brown',
+//     appointmentDate: '2024-09-18',
+//     appointmentTime: '12:00 PM',
+//     doctorImage: '/doc.jpg',
+//     expertise: 'General Medicine',
+//   },
+//   {
+//     id: 3,
+//     patientName: 'Annie Love',
+//     message: 'Open Reduction and Internal Fixation Surgery.',
+//     doctorName: 'Dr. Emma Watson',
+//     appointmentDate: '2024-09-22',
+//     appointmentTime: '09:00 AM',
+//     doctorImage: '/doc.jpg',
+//     expertise: 'Orthopedic Surgery',
+//   },
 ];
 
 const AppointmentManagement = () => {
@@ -113,7 +113,7 @@ const AppointmentManagement = () => {
           </div>
         </div>
         <div>
-          <p>Call us: +49 123 456 7890</p>
+          {/* <p>Call us: +49 123 456 7890</p> */}
         </div>
       </div>
 
@@ -132,13 +132,13 @@ const AppointmentManagement = () => {
               <strong>Patient:</strong> {appointment.patientName}
             </div>
             <div style={cardTextStyle}>
-              <strong>Message:</strong> {appointment.message}
+              {/* <strong>Message:</strong> {appointment.message} */}
             </div>
             <div style={cardTextStyle}>
-              <strong>Date:</strong> {appointment.appointmentDate}
+              {/* <strong>Date:</strong> {appointment.appointmentDate} */}
             </div>
             <div style={cardTextStyle}>
-              <strong>Time:</strong> {appointment.appointmentTime}
+              {/* <strong>Time:</strong> {appointment.appointmentTime} */}
             </div>
           </div>
         ))}

@@ -39,11 +39,11 @@ const billingData = [
     ],
   },
   {
-    category: 'Emergency Surgery',
+    category: 'Emergency Surgery Required',
     items: [
-      { name: 'ORIF Surgery', details: 'Time: 10:00 AM, Date: 15/09/2024', price: '-' },
+      { name: 'ORIF Surgery', details: 'Time: 09:00 AM, Date: 18/09/2024', price: '-' },
       { name: 'Anesthesia', details: 'General anesthesia for surgery', price: '-' },
-      { name: 'Surgical Tools', details: 'ORIF specific tools', price: '-' },
+    //   { name: 'Surgical Tools', details: 'ORIF specific tools', price: '-' },
       { name: 'Post-Surgery Medication', details: 'Pain relief and antibiotics', price: '-' },
       { name: 'Physiotherapy Session', details: 'Post-surgery rehab', price: '-' },
     ],
@@ -137,12 +137,12 @@ const BillingSystem = () => {
           </div>
         </div>
         <div>
-          <p>Call us: +49 123 456 7890</p>
+          {/* <p>Call us: +49 123 456 7890</p> */}
         </div>
       </div>
 
       <h1 style={headerStyle}>Billing Information</h1>
-      <p style={{ textAlign: 'center' }}>View and pay your bills online.</p>
+      {/* <p style={{ textAlign: 'center' }}>View and pay your bills online.</p> */}
 
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
         <p style={totalStyle}>Total Bill: €{totalBill.toFixed(2)}</p>

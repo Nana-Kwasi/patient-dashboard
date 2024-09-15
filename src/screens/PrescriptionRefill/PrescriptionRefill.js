@@ -124,7 +124,7 @@ const PrescriptionRefill = () => {
           </div>
         </div>
         <div>
-          <p>Call us: +49 123 456 7890</p>
+          {/* <p>Call us: +49 123 456 7890</p> */}
         </div>
       </div>
 

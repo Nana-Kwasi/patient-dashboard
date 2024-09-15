@@ -2,22 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, ResponsiveContainer } from 'recharts';
 
-// Sample data for graphs starting from August 26th to the current month
 const dataBills = [
-  { name: 'Aug 26', total: 1140, outstanding: 500 },  // August outstanding
-  { name: 'Sep', total: 960, outstanding: 407 },       // September outstanding
+  { name: 'Aug', total: 1140, outstanding: 500 }, 
+  { name: 'Sep', total: 960, outstanding: 407 },    
 ];
 
 const totalBill = dataBills.reduce((sum, entry) => sum + entry.total, 0);
 const outstandingBill = dataBills.reduce((sum, entry) => sum + entry.outstanding, 0);
 
 const dataTreatments = [
-  { name: 'Vital Signs Monitorin', response: 85 },
+  { name: 'Vital Signs Monitoring', response: 85 },
   { name: 'Neurological Examination', response: 40 },
   { name: 'Imaging', response: 62 },
   { name: 'Life Support', response: 35 },
-  // { name: 'ORIF Surgery', response: 0.1 },
-
 ];
 
 const dataDaysSpent = [
@@ -28,60 +25,8 @@ const dataDaysSpent = [
 ];
 
 const PatientDashboard = () => {
-  const dashboardContainerStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '40px',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '50px',
-  };
-
-  const imageLinkStyle = {
-    display: 'block',
-    textAlign: 'center',
-  };
-
-  const imageStyle = {
-    width: '150px',
-    height: '150px',
-    objectFit: 'contain',
-    cursor: 'pointer',
-    borderRadius: '10px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-  };
-
-  const labelStyle = {
-    marginTop: '10px',
-    fontSize: '20px',
-    color: 'white',
-  };
-
-  const profileContainerStyle = {
-    textAlign: 'right',
-    marginBottom: '30px',
-    padding: '0 50px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px', // To adjust the gap between profile image and name
-  };
-
-  const profileImageStyle = {
-    width: '100px',
-    height: '100px',
-    borderRadius: '50%',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    objectFit: 'cover',
-  };
-
-  const profileNameStyle = {
-    fontSize: '20px',
-    fontWeight: 'bold',
-    color: 'white',
-  };
-
   const containerStyle = {
-    backgroundImage: 'url(/d1.jpg)',
+    backgroundImage: 'url(/db2.jpg)',  // Adjusted to reflect the attached image
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -114,7 +59,7 @@ const PatientDashboard = () => {
   };
 
   const hospitalNameStyle = {
-    fontSize: '24px',
+    fontSize: '14px',
     fontWeight: 'bold',
   };
 
@@ -122,118 +67,116 @@ const PatientDashboard = () => {
     fontSize: '16px',
   };
 
+  const profileContainerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px', // To adjust the gap between profile image and name
+  };
+
+  const profileImageStyle = {
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    objectFit: 'cover',
+  };
+
+  const profileNameStyle = {
+    fontSize: '18px',
+    fontWeight: 'bold',
+  };
+
+  const navLinksStyle = {
+    display: 'flex',
+    gap: '20px',
+    alignItems: 'center',
+  };
+
+  const navLinkStyle = {
+    color: 'white',
+    textDecoration: 'none',
+    padding: '10px 20px',
+    fontSize: '15px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  };
+
   return (
     <div style={containerStyle}>
-      {/* Top Bar with Logo and Hospital Name */}
+      {/* Top Bar with Logo, Hospital Name, and Profile Section */}
       <div style={topBarStyle}>
         <div style={logoStyle}>
           <img src="/logo.png" alt="Hospital Logo" style={logoImageStyle} />
           <span style={hospitalNameStyle}>Annie's Dashboard</span>
         </div>
-        <span style={additionalTextStyle}>Providing Care with Compassion</span>
-      </div>
 
-      <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        {/* Profile Section */}
+        <div style={navLinksStyle}>
+          {/* <Link to="/appointments" style={navLinkStyle}>Appointments</Link> */}
+          <Link to="/medical-records" style={navLinkStyle}>Medical Records</Link>
+          <Link to="/billing" style={navLinkStyle}>Billing Info</Link>
+          <Link to="/prescriptions" style={navLinkStyle}>Prescription Refills</Link>
+          <Link to="/health-monitoring" style={navLinkStyle}>Health Monitoring</Link>
+        </div>
+
         <div style={profileContainerStyle}>
           <img src="/pro.jpeg" alt="Profile" style={profileImageStyle} />
-          <p style={profileNameStyle}>Annie Love</p>
+          <span style={profileNameStyle}>Annie Love</span>
+        </div>
+      </div>
+
+      {/* Graphs Section */}
+      <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        {/* Graph for Total and Outstanding Bills */}
+        <div>
+          {/* <h3 style={{ color: 'white' }}>Billing Information</h3> */}
+          <div style={{ color: 'white', marginTop: '10px' , fontSize:"40px", }}>
+            {/* <p>Total Bill: €{totalBill}</p> */}
+            <p>Outstanding Balance: €{outstandingBill}</p>
+          </div>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={dataBills}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="white" />
+              <YAxis stroke="white" />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="total" fill="#8884d8" />
+              <Bar dataKey="outstanding" fill="#82ca9d" />
+            </BarChart>
+          </ResponsiveContainer>
+          {/* <div style={{ color: 'white', marginTop: '10px' , fontSize:"40px"}}>
+            <p>Total Bill: €{totalBill}</p>
+            <p>Outstanding Bill: €{outstandingBill}</p>
+          </div> */}
         </div>
 
-        <div style={dashboardContainerStyle}>
-          {/* Manage Appointments */}
-          <div style={imageLinkStyle}>
-            <Link to="/appointments">
-              <img src="/online.png" alt="Manage Appointments" style={imageStyle} />
-            </Link>
-            <div style={labelStyle}>Appointments</div>
-          </div>
-
-          {/* View Medical Records */}
-          <div style={imageLinkStyle}>
-            <Link to="/medical-records">
-              <img src="/health-report.png" alt="View Medical Records" style={imageStyle} />
-            </Link>
-            <div style={labelStyle}>Medical Records</div>
-          </div>
-
-          {/* Request Prescription Refills */}
-          <div style={imageLinkStyle}>
-            <Link to="/prescriptions">
-              <img src="/online-pharmacy.png" alt="Request Prescription Refills" style={imageStyle} />
-            </Link>
-            <div style={labelStyle}>Prescription Refills</div>
-          </div>
-
-          {/* View Billing Information */}
-          <div style={imageLinkStyle}>
-            <Link to="/billing">
-              <img src="/payment.png" alt="View Billing Information" style={imageStyle} />
-            </Link>
-            <div style={labelStyle}>Billing Information</div>
-          </div>
-
-          {/* Health Monitoring Tools */}
-          <div style={imageLinkStyle}>
-            <Link to="/health-monitoring">
-              <img src="/diagnosis.png" alt="Health Monitoring Tools" style={imageStyle} />
-            </Link>
-            <div style={labelStyle}>Health Monitoring Tools</div>
-          </div>
-        </div>
-
-        {/* Graphs Section */}
+        {/* Graph for Treatments and Response */}
         <div style={{ marginTop: '50px' }}>
-          <h2 style={{ color: 'white' }}> </h2>
+          <h3 style={{ color: 'white' }}>Response to Treatment</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={dataTreatments}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="white" />
+              <YAxis stroke="white" />
+              <Tooltip />
+              <Bar dataKey="response" fill="#8884d8" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
 
-          {/* Graph for Total and Outstanding Bills */}
-          <div>
-            <h3 style={{ color: 'white' }}>Billing Information</h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={dataBills}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" stroke="white" />
-                <YAxis stroke="white" />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="total" fill="#8884d8" />
-                <Bar dataKey="outstanding" fill="#82ca9d" />
-              </BarChart>
-            </ResponsiveContainer>
-            <div style={{ color: 'white', marginTop: '10px' }}>
-              <p>Total Bill: €{totalBill}</p>
-              <p>Outstanding Bill: €{outstandingBill}</p>
-            </div>
-          </div>
-
-          {/* Graph for Treatments and Response */}
-          <div style={{ marginTop: '50px' }}>
-            <h3 style={{ color: 'white' }}>Response to Treatment</h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={dataTreatments}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" stroke="white" />
-                <YAxis stroke="white" />
-                <Tooltip />
-                <Bar dataKey="response" fill="#8884d8" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-
-          {/* Graph for Days Spent in Hospital */}
-          <div style={{ marginTop: '50px' }}>
-            <h3 style={{ color: 'white' }}>Days Spent in Hospital</h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={dataDaysSpent}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" stroke="white" />
-                <YAxis stroke="white" />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="days" stroke="#8884d8" />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
+        {/* Graph for Days Spent in Hospital */}
+        <div style={{ marginTop: '50px' }}>
+          <h3 style={{ color: 'white' }}>Days Spent in Hospital</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={dataDaysSpent}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" stroke="white" />
+              <YAxis stroke="white" />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="days" stroke="#8884d8" />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>
