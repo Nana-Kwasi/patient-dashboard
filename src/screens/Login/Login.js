@@ -101,7 +101,7 @@ const LoginScreen = () => {
       <p><strong>Name:</strong> Annie Love Mertens</p>
       <p><strong>Hospital ID:</strong> P2024GER-7934XQZ8</p>
       <p><strong>Age:</strong> 46</p>
-      <p><strong>Condition:</strong>  Unconsciousness</p>
+      <p><strong>Condition:</strong>  ORIF Required</p>
       
       <button
         onClick={() => navigate('/dashboard')}

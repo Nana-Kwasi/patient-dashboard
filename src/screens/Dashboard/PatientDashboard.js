@@ -36,6 +36,7 @@ const PatientDashboard = () => {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    padding: '20px',
   };
 
   const topBarStyle = {
@@ -61,10 +62,6 @@ const PatientDashboard = () => {
   const hospitalNameStyle = {
     fontSize: '14px',
     fontWeight: 'bold',
-  };
-
-  const additionalTextStyle = {
-    fontSize: '16px',
   };
 
   const profileContainerStyle = {
@@ -101,6 +98,43 @@ const PatientDashboard = () => {
     transition: 'background-color 0.3s ease',
   };
 
+  const cardsContainerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    gap: '20px',
+    marginTop: '50px',
+    marginBottom: '50px',
+  };
+
+  const cardStyle = {
+    backgroundColor: '#f5f5f5',  // Light background
+    padding: '20px',
+    borderRadius: '10px',
+    color: '#333',
+    flex: 1,
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    fontSize: '16px',
+    textAlign: 'left',
+  };
+
+  const cardVitalStyle = {
+    backgroundColor: '#E3F2FD',  // Light blue background for vitals
+    padding: '20px',
+    borderRadius: '10px',
+    color: '#333',
+    flex: 1,
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    fontSize: '16px',
+    textAlign: 'left',
+  };
+
+  const cardHeaderStyle = {
+    fontSize: '20px',
+    fontWeight: 'bold',
+    marginBottom: '15px',
+    
+  };
+
   return (
     <div style={containerStyle}>
       {/* Top Bar with Logo, Hospital Name, and Profile Section */}
@@ -111,7 +145,6 @@ const PatientDashboard = () => {
         </div>
 
         <div style={navLinksStyle}>
-          {/* <Link to="/appointments" style={navLinkStyle}>Appointments</Link> */}
           <Link to="/medical-records" style={navLinkStyle}>Medical Records</Link>
           <Link to="/billing" style={navLinkStyle}>Billing Info</Link>
           <Link to="/prescriptions" style={navLinkStyle}>Prescription Refills</Link>
@@ -124,15 +157,34 @@ const PatientDashboard = () => {
         </div>
       </div>
 
+      {/* Cards for Current Status and Current Vitals */}
+      <div style={cardsContainerStyle}>
+        {/* Card for Current Status */}
+        <div style={cardStyle}>
+          <h3 style={cardHeaderStyle}>Current Status</h3>
+          <ul>
+            <li>Patient is alert, oriented to time, place, and person, and fully breathing independently.</li>
+            <li>Neurological function shows significant improvement with no signs of seizures or brain swelling.</li>
+            <li>Patient is ambulatory with assistance and continues to work with physical and occupational therapists.</li>
+            <li>Current medications include oral pain management (Acetaminophen 500 mg, as needed) and continued physical therapy for motor recovery.</li>
+            <li>Awaiting surgery for left femur fracture.</li>
+          </ul>
+        </div>
+
+        {/* Card for Current Vitals */}
+        <div style={cardVitalStyle}>
+          <h3 style={cardHeaderStyle}>Current Vitals</h3>
+          <p><strong>Blood Pressure:</strong> 120/80 mmHg</p>
+          <p><strong>Heart Rate:</strong> 72 bpm</p>
+          <p><strong>Respiratory Rate:</strong> 16 breaths/min</p>
+          <p><strong>Body Temperature:</strong> 36.8°C</p>
+        </div>
+      </div>
+
       {/* Graphs Section */}
-      <div style={{ textAlign: 'center', marginTop: '50px' }}>
+      <div style={{ textAlign: 'center' }}>
         {/* Graph for Total and Outstanding Bills */}
         <div>
-          {/* <h3 style={{ color: 'white' }}>Billing Information</h3> */}
-          <div style={{ color: 'white', marginTop: '10px' , fontSize:"40px", }}>
-            {/* <p>Total Bill: €{totalBill}</p> */}
-            <p>Outstanding Balance: €{outstandingBill}</p>
-          </div>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={dataBills}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -144,10 +196,10 @@ const PatientDashboard = () => {
               <Bar dataKey="outstanding" fill="#82ca9d" />
             </BarChart>
           </ResponsiveContainer>
-          {/* <div style={{ color: 'white', marginTop: '10px' , fontSize:"40px"}}>
+          <div style={{ color: 'white', marginTop: '10px', fontSize: "20px" }}>
             <p>Total Bill: €{totalBill}</p>
             <p>Outstanding Bill: €{outstandingBill}</p>
-          </div> */}
+          </div>
         </div>
 
         {/* Graph for Treatments and Response */}
