@@ -17,9 +17,9 @@ const medicalRecords = [
     category: 'Vital Signs',
     records: [
       { label: 'Blood Pressure', value: '120/80 mmHg' },
-      { label: 'Heart Rate', value: '72 bpm' },
-      { label: 'Respiratory Rate', value: '16 breaths/min' },
-      { label: 'Body Temperature', value: '36.8°C' },
+      { label: 'Heart Rate', value: ' 80 bpm' },
+      { label: 'Respiratory Rate', value: '20 breaths/min ' },
+      { label: 'Body Temperature', value: '37°C' },
     ],
   },
   {
@@ -41,17 +41,22 @@ const medicalRecords = [
     records: [
       { label: 'Appendectomy', value: '2015' },
       { label: 'ORIF Surgery', value: '2023 (Left Ankle)' },
+      { label: 'ORIF Surgery', value: '2024 (Left Leg)' },
+
     ],
   },
   {
-    category: 'Lab Test Results',
+    category: 'Post-Surgery Lab Test Results',
     records: [
       { label: 'Complete Blood Count (CBC)', value: 'Normal' },
       { label: 'Liver Function Test', value: 'Normal' },
-      { label: 'Blood Sugar Level', value: '98 mg/dL (Fasting)' },
-      { label: 'Cholesterol', value: '200 mg/dL' },
+      { label: 'Blood Sugar Level', value: '110 mg/dL (Post-Surgery)' },
+      { label: 'Electrolytes', value: 'Within Normal Range' },
+      { label: 'Inflammatory Markers', value: 'Slightly Elevated' },
+      { label: 'Hemoglobin Levels', value: '12.5 g/dL' },
     ],
-  },
+  }
+  
 //   {
 //     category: 'Immunizations',
 //     records: [

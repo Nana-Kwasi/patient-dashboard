@@ -1,19 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const billingData = [
   {
     category: 'Pre-Surgery Medications',
     items: [
-      { name: 'Paracetamol', dosage: '500 mg, 3x daily', price: 100, status: 'Delivered' },
+      { name: 'Paracetamol', dosage: '500 mg, 3x daily', price: 160, status: 'Delivered' },
       { name: 'Ibuprofen', dosage: '400 mg, as needed for pain', price: 150, status: 'Delivered' },
-      { name: 'Omeprazole', dosage: '20 mg, once daily (before meals)', price: 200, status: 'Processing' },
+      { name: 'Omeprazole', dosage: '20 mg, once daily (before meals)', price: 200, status: 'Delivered' },
     ],
   },
   {
     category: 'Blood Thinners',
     items: [
-      { name: 'Aspirin', dosage: '75 mg, once daily', price: 100, status: 'Delivered' },
-      { name: 'Clopidogrel', dosage: '75 mg, once daily', price: 150, status: 'Processing' },
+      { name: 'Aspirin', dosage: '75 mg, once daily', price: 134, status: 'Delivered' },
+      { name: 'Clopidogrel', dosage: '75 mg, once daily', price: 150, status: 'Delivered' },
     ],
   },
   {
@@ -41,9 +42,8 @@ const billingData = [
   {
     category: 'Emergency Surgery Required',
     items: [
-      { name: 'ORIF Surgery', details: 'Time: 09:00 AM, Date: 18/09/2024', price: '-' },
+      { name: 'ORIF Surgery', details: 'Successfully completed', price: '-' },
       { name: 'Anesthesia', details: 'General anesthesia for surgery', price: '-' },
-    //   { name: 'Surgical Tools', details: 'ORIF specific tools', price: '-' },
       { name: 'Post-Surgery Medication', details: 'Pain relief and antibiotics', price: '-' },
       { name: 'Physiotherapy Session', details: 'Post-surgery rehab', price: '-' },
     ],
@@ -54,8 +54,7 @@ const calculateCategoryTotal = (items) =>
   items.reduce((sum, item) => sum + (typeof item.price === 'number' ? item.price : 0), 0);
 
 const totalBill = billingData.reduce((sum, category) => sum + calculateCategoryTotal(category.items), 0);
-
-const paidAmount = 1193; 
+const paidAmount = 2194.00;
 const outstandingAmount = totalBill - paidAmount;
 
 const BillingSystem = () => {
@@ -76,6 +75,24 @@ const BillingSystem = () => {
     backgroundColor: '#fff',
     maxWidth: '800px',
     margin: '20px auto',
+  };
+
+  const buttonStyle = {
+    backgroundColor: '#4CAF50', 
+    color: 'white',
+    padding: '10px 20px',
+    textAlign: 'center',
+    fontSize: '16px',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    border: 'none',
+    marginBottom: '20px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    transition: '0.3s',
+  };
+
+  const buttonHoverStyle = {
+    backgroundColor: '#45a049',
   };
 
   const tableStyle = {
@@ -136,18 +153,19 @@ const BillingSystem = () => {
             <h2>Committed to your well-being</h2>
           </div>
         </div>
-        <div>
-          {/* <p>Call us: +49 123 456 7890</p> */}
-        </div>
       </div>
 
       <h1 style={headerStyle}>Billing Information</h1>
-      {/* <p style={{ textAlign: 'center' }}>View and pay your bills online.</p> */}
 
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <Link to="/forms">
+          <button style={buttonStyle}>Pay Now</button>
+        </Link>
         <p style={totalStyle}>Total Bill: €{totalBill.toFixed(2)}</p>
         <p style={totalStyle}>Paid Amount: €{paidAmount.toFixed(2)}</p>
-        <p style={outstandingStyle}>Outstanding Amount: €{outstandingAmount.toFixed(2)}</p>
+        <p style={outstandingStyle}>Outstanding Amount: € 0</p>
+        {/* <p style={outstandingStyle}>Outstanding Amount: €{outstandingAmount.toFixed(2)}</p> */}
+
       </div>
 
       {billingData.map((category, index) => (

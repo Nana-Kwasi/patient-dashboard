@@ -9,9 +9,8 @@ import HealthMonitoring from './screens/HealthMonitoring/HealthMonitoring';
 import LoginScreen from './screens/Login/Login';
 import MedicalRecord from './screens/MedicalRecords/MedicalRecords';
 import PrescriptionRefill from './screens/PrescriptionRefill/PrescriptionRefill';
-
-
-
+import PaymentScreen from './screens/Pay/Payment';
+import FormsScreen from './screens/Forms/Forms';
 
 function App() {
   return (
@@ -25,6 +24,9 @@ function App() {
       <Route path="/prescriptions" element={<PrescriptionRefill />} />
       <Route path="/billing" element={<BillingSystem />} />
       <Route path="/health-monitoring" element={<HealthMonitoring />} />
+      <Route path="/Payment" element={<PaymentScreen />} />
+      <Route path="/Forms" element={<FormsScreen />} />
+
     </Routes>
   </Router>
   );
