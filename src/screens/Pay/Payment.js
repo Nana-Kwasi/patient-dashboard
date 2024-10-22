@@ -309,7 +309,7 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useState,useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 
 const PaymentForm = () => {
@@ -333,7 +333,7 @@ const PaymentForm = () => {
 
     setTimeout(() => {
       if (paymentAttempts < 1) {
-        setErrorMessage('System is currently down.Please contact the finance team for assistance.Thank You');
+        setErrorMessage('We are currently migrating our payment system to a new platform. The system is temporarily down until further notice. Thank You');
         setPaymentAttempts(prev => prev + 1);
         setIsLoading(false);
       } else {
@@ -347,6 +347,71 @@ const PaymentForm = () => {
     const value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
     setCardNumber(value); // Update state with card number
   };
+
+  useEffect(() => {
+    // Create the alert content with the payment system migration message
+    const alertContent = `
+      <div style="
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        color: #333;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        max-width: 450px;
+        margin: 0 auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      ">
+        <h2 style="color: #dc3545; font-size: 22px; margin-bottom: 20px;">
+          Payment System Unavailable
+        </h2>
+        <p style="font-size: 18px; color: #333; margin-bottom: 20px;">
+          We are currently migrating our payment system to a new platform. The system is temporarily down until further notice.Thank You
+        </p>
+        <button id="okBtn" style="
+          background-color: red;
+          color: white;
+          border: none;
+          padding: 12px;
+          border-radius: 5px;
+          cursor: pointer;
+          width: 100%;
+          font-size: 16px;
+          margin-top: 20px;
+        ">OK</button>
+      </div>
+    `;
+
+    // Create alert element
+    const styledAlert = document.createElement('div');
+    styledAlert.innerHTML = alertContent;
+    styledAlert.style.position = 'fixed';
+    styledAlert.style.top = '50%';
+    styledAlert.style.left = '50%';
+    styledAlert.style.transform = 'translate(-50%, -50%)';
+    styledAlert.style.backgroundColor = '#ffffff';
+    styledAlert.style.padding = '20px';
+    styledAlert.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+    styledAlert.style.zIndex = '1000';
+    styledAlert.style.borderRadius = '10px';
+
+    // Append the alert to the body
+    document.body.appendChild(styledAlert);
+
+    // Add click event for "OK" button
+    const okButton = styledAlert.querySelector('#okBtn');
+    okButton.addEventListener('click', () => {
+      styledAlert.remove(); // Close the alert on button click
+    });
+
+    // Cleanup function to remove the alert when the component unmounts
+    return () => {
+      styledAlert.remove();
+    };
+  }, []);
+
 
   return (
     <div style={styles.container}>
@@ -595,6 +660,8 @@ const styles = {
     marginTop: '20px',
     color: 'red',
     textAlign: 'center',
+    fontSize: '20px',
+
   },
   billSummaryCard: {
     width: '30%',

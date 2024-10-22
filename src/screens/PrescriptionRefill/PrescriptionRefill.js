@@ -4,7 +4,7 @@ import React from 'react';
 // Sample prescription data for an accident patient preparing for surgery
 const prescriptionData = [
   {
-    category: 'Pre-Surgery Medications',
+    category: 'Post-Surgery Medications',
     prescriptions: [
       { name: 'Paracetamol', dosage: '500 mg, 3x daily', status: 'Delivered' },
       { name: 'Ibuprofen', dosage: '400 mg, as needed for pain', status: 'Delivered' },

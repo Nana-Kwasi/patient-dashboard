@@ -1,6 +1,6 @@
 {
   "name": "patient-portal",
-  "version": "0.4.6",
+  "version": "0.4.8",
   "private": true,
   "dependencies": {
     "@paystack/inline-js": "^2.20.3",

@@ -44,7 +44,7 @@ const medicationData = [
 ];
 
 const prescriptionData = [
-  { category: 'Pre-Surgery Medications', count: 3 },
+  { category: 'Post-Surgery Medications', count: 3 },
   { category: 'Blood Thinners', count: 2 },
   { category: 'Pain Management', count: 2 },
   { category: 'Antibiotics (Post-Surgery)', count: 2 },

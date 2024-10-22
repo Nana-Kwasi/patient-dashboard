@@ -293,34 +293,80 @@ const dataDaysSpent = [
 
 const PatientDashboard = () => {
   useEffect(() => {
+    // Prices for each procedure
+    const physicalTherapyCost = 240; // 60 euros per session, 4 sessions
+    const imagingTestsCost = 150;
+    const bloodClotPreventionCost = 183.99;
+    const mobilityAidsCost = 280;
+    const woundCareCost = 90;
+  
+    // Calculate total post-surgery care cost
+    const postSurgeryTotal = physicalTherapyCost + imagingTestsCost + bloodClotPreventionCost + mobilityAidsCost + woundCareCost;
+  
+    // Total cost for all procedures including ORIF
+    const orifTotal = 1750;
+    const grandTotal = postSurgeryTotal + orifTotal;
+  
+    // Create the alert content
     const alertContent = `
       <div style="
-        background-color: #f0f8ff;
-        padding: 15px;
-        border-radius: 8px;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
         color: #333;
         font-family: Arial, sans-serif;
         font-size: 14px;
-        line-height: 1.4;
+        line-height: 1.6;
         max-width: 90%;
         margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       ">
-        <h2 style="color: #0056b3; font-size: 18px; text-align: center;">Post-Surgery Update for Miss Annie</h2>
-        <p>I'm pleased to inform you that Miss Annie’s ORIF (Open Reduction and Internal Fixation) surgery was a success.</p>
-        
-        <p><strong>Next Steps in Post-Surgery Care:</strong></p>
-        <ul style="padding-left: 18px; list-style-type: disc;">
-          <li><strong>Physical Therapy:</strong> Ongoing rehabilitation sessions (may incur additional costs).</li>
-          <li><strong>Imaging Tests:</strong> Follow-up X-rays or scans to monitor bone healing (charges may apply).</li>
-          <li><strong>Blood Clot Prevention:</strong> Medications and compression devices (may require separate payment).</li>
-          <li><strong>Mobility Aids:</strong> Crutches, walker, or other aids (purchase or rental may be necessary).</li>
-          <li><strong>Follow-up Appointments:</strong> Specialist consultations after surgery (potential extra fees).</li>
-          <li><strong>Wound Care Supplies:</strong> Special dressings and antiseptics for regular care (may incur costs).</li>
+        <h2 style="color: red; font-size: 20px; text-align: center; margin-bottom: 20px;">EMERGENCY:Immediate Post Surgery Care</h2>        
+        <p style="font-weight: bold; color: #333; margin-top: 15px;">Updated charge for each Post-Surgery Care:</p>
+        <ul style="padding-left: 18px; list-style-type: none; margin-bottom: 20px;">
+          <li style="margin-bottom: 8px;">
+            <span style="font-weight: bold;">Physical Therapy (4 sessions):</span>
+            <span style="color: #28a745; font-weight: bold;">€60 per session</span> 
+            <span style="color: #17a2b8; font-weight: bold;">(Total: €240)</span>
+          </li>
+          <li style="margin-bottom: 8px;">
+            <span style="font-weight: bold;">Imaging Tests:</span>
+            <span style="color: #ffc107; font-weight: bold;">€150</span>
+          </li>
+          <li style="margin-bottom: 8px;">
+            <span style="font-weight: bold;">Blood Clot Prevention Medications:</span>
+            <span style="color: #dc3545; font-weight: bold;">€183.99</span>
+          </li>
+          <li style="margin-bottom: 8px;">
+            <span style="font-weight: bold;">Mobility Aids Rental (2 weeks):</span>
+            <span style="color: #28a745; font-weight: bold;">€280</span>
+          </li>
+          <li style="margin-bottom: 8px;">
+            <span style="font-weight: bold;">Wound Care Supplies:</span>
+            <span style="color: #ffc107; font-weight: bold;">€90</span>
+          </li>
         </ul>
-        <p style="text-align: right; font-style: italic; color: #0056b3;">Assigned Doctor<br/>Dr. Ackstaller</p>
+        <p style="font-weight: bold; color: #333;">Total cost of post-surgery care: <span style="color: #17a2b8;">${postSurgeryTotal.toFixed(2)} €</span></p>
+  
+        <p style="font-weight: bold; color: #333;">Total cost of Anni's ORIF all procedures: <span style="color: #28a745;">€3,500</span> but NGO covered half so she is paying €1,750 </p>
+  
+        <p style="font-weight: bold; color: #0056b3; font-size: 16px;"> Total Bill (ORIF + Post-Surgery Care): <span style="color: #dc3545;">€${grandTotal.toFixed(2)}</span></p>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+          <button id="payNowBtn" style="
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 120px;
+          ">Pay Now</button>
+          <p style="font-style: italic; color: #007bff; text-align: right;">Assigned Doctor<br/>Dr. Ackstaller</p>
+        </div>
       </div>
     `;
-
+  
     // Create alert element
     const styledAlert = document.createElement('div');
     styledAlert.innerHTML = alertContent;
@@ -329,35 +375,46 @@ const PatientDashboard = () => {
     styledAlert.style.left = '50%';
     styledAlert.style.transform = 'translate(-50%, -50%)';
     styledAlert.style.backgroundColor = '#ffffff';
-    styledAlert.style.border = '1px solid #0056b3';
+    styledAlert.style.border = '1px solid #007bff';
     styledAlert.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
     styledAlert.style.padding = '15px';
-    styledAlert.style.borderRadius = '8px';
+    styledAlert.style.borderRadius = '10px';
     styledAlert.style.width = '90%'; // Make it responsive for mobile
     styledAlert.style.maxWidth = '400px'; // Limit the maximum width on larger screens
+    styledAlert.style.maxHeight = '90vh'; // Allow up to 90% of the viewport height
+    styledAlert.style.overflowY = 'auto'; // Enable vertical scrolling for overflow content
     styledAlert.style.zIndex = '1000';
     styledAlert.style.overflowY = 'hidden'; // Ensure it fits within content size
-
+  
     // Create OK button
     const closeButton = document.createElement('button');
     closeButton.textContent = 'OK';
     closeButton.style.marginBottom = '15px'; // Place it above the content
-    closeButton.style.backgroundColor = '#0056b3';
+    closeButton.style.backgroundColor = '#007bff';
     closeButton.style.color = 'white';
     closeButton.style.border = 'none';
     closeButton.style.padding = '10px';
     closeButton.style.borderRadius = '5px';
     closeButton.style.cursor = 'pointer';
     closeButton.style.width = '100%'; // Full width for better accessibility
-
+  
     closeButton.onclick = () => {
       styledAlert.remove();
     };
-
+  
     // Insert button before content
     styledAlert.insertBefore(closeButton, styledAlert.firstChild);
     document.body.appendChild(styledAlert);
+  
+    // Attach click event to Pay Now button
+    const payNowButton = styledAlert.querySelector('#payNowBtn'); // Ensure it's found within the inserted alert
+    payNowButton.onclick = () => {
+      // Use the appropriate navigation logic here
+      window.location.href = '/forms'; // Replace with actual navigation logic for your billing screen
+    };
   }, []);
+  
+  
   const containerStyle = {
     backgroundImage: 'url(/db2.jpg)', 
     backgroundSize: 'cover',
@@ -451,13 +508,13 @@ const PatientDashboard = () => {
   };
 
   const cardStyle = {
-    backgroundColor: 'green',  
+    backgroundColor: 'red',  
     padding: '20px',
     borderRadius: '10px',
     color: '#333',
     flex: '1 1 45%', 
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    fontSize: '16px',
+    fontSize: '18px',
     textAlign: 'left',
   };
 
@@ -522,16 +579,16 @@ const PatientDashboard = () => {
           <li><strong>Surgery Update:</strong></li>
 <li>Miss Annie’s ORIF (Open Reduction and Internal Fixation) surgery has been successfully completed.</li>
 <li>She is now stable and in recovery under close supervision.</li>
-<li>Post-surgery care, including physical therapy and follow-up imaging, will be arranged.</li>
+<li>Post-surgery care, including physical therapy and follow-up imaging has been arranged.</li>
 <li>The medical team will continue to monitor her progress.</li>
 <li>Further updates will be provided as needed during her recovery.</li>
 
-          <li>Physical Therapy: Ongoing rehabilitation sessions (may incur additional costs).</li>
-<li>Imaging Tests: Follow-up X-rays or scans to monitor bone healing (charges may apply).</li>
-<li>Blood Clot Prevention: Medications and compression devices (may require separate payment).</li>
-<li>Mobility Aids: Crutches, walker, or other aids (purchase or rental may be necessary).</li>
-<li>Follow-up Appointments: Specialist consultations after surgery (potential extra fees).</li>
-<li>Wound Care Supplies: Special dressings and antiseptics for regular care (may incur costs).</li>
+          <li>Physical Therapy: Ongoing rehabilitation sessions.</li>
+<li>Imaging Tests: Follow-up X-rays or scans to monitor bone healing.</li>
+<li>Blood Clot Prevention: Medications and compression devices.</li>
+<li>Mobility Aids: Crutches, walker, or other aids.</li>
+<li>Follow-up Appointments: Specialist consultations after surgery.</li>
+<li>Wound Care Supplies: Special dressings and antiseptics for regular care.</li>
 
 
           </ul>

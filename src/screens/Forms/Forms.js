@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Forms = () => {
   const [email, setEmail] = useState('');
   const [patientId] = useState('P2024GER-7934XQZ8'); // Set initial value and make it non-editable
-  const [billAmount] = useState('0'); // Set initial value for bill amount and make it non-editable
+  const [billAmount] = useState('2693.99'); // Set initial value for bill amount and make it non-editable
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
